@@ -1,0 +1,34 @@
+.product-listing-page {
+    padding: 2rem;
+    background-color: #f8fcf8;
+    min-height: calc(100vh - 80px);
+}
+
+.products-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-section {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.divider-left {
+    width: 40px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin-bottom: 2rem;
+    border-radius: 2px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+}

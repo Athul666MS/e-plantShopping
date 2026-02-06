@@ -1,0 +1,120 @@
+.cart-item {
+    display: grid;
+    grid-template-columns: 100px 2fr 1fr 1fr 100px;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    background: white;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.cart-item-price {
+    color: #666;
+    margin-top: 5px;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+    background: #e0e0e0;
+}
+
+.qty-value {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.cart-item-total {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    text-align: right;
+}
+
+.delete-btn {
+    background-color: #ffeff0;
+    color: #ff4d4f;
+    border: 1px solid #ffccc7;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #ff4d4f;
+    color: white;
+    border-color: #ff4d4f;
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        grid-template-columns: 80px 1fr auto;
+        grid-template-areas:
+            "image info total"
+            "image qty delete";
+        gap: 1rem;
+    }
+
+    .cart-item-image {
+        grid-area: image;
+        width: 80px;
+        height: 80px;
+    }
+
+    .cart-item-details {
+        grid-area: info;
+    }
+
+    .cart-item-quantity {
+        grid-area: qty;
+    }
+
+    .cart-item-total {
+        grid-area: total;
+        align-self: start;
+    }
+
+    .delete-btn {
+        grid-area: delete;
+        justify-self: end;
+    }
+}
