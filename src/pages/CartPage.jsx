@@ -1,11 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+import { useSelector } from 'react-redux';
 import CartItem from '../components/CartItem';
 import './CartPage.css';
 
 const CartPage = () => {
-    const { cartItems, totalItems, totalCost } = useCart();
+    // Get cart items from Redux store
+    const cartItems = useSelector((state) => state.cart.items);
+
+    // Calculate total cart amount using Array.reduce()
+    const totalCartAmount = cartItems.reduce((total, item) => {
+        return total + (item.price * item.quantity);
+    }, 0);
+
+    // Calculate total number of items
+    const totalItems = cartItems.reduce((total, item) => {
+        return total + item.quantity;
+    }, 0);
 
     const handleCheckout = () => {
         alert('Coming Soon');
@@ -28,7 +39,7 @@ const CartPage = () => {
                     <>
                         <div className="cart-summary-top">
                             <p>Total Plants: <strong>{totalItems}</strong></p>
-                            <p>Total Cost: <strong>${totalCost.toFixed(2)}</strong></p>
+                            <p>Total Cost: <strong>${totalCartAmount.toFixed(2)}</strong></p>
                         </div>
 
                         <div className="cart-items-list">
@@ -42,7 +53,7 @@ const CartPage = () => {
                                 <button className="continue-shopping-btn">Continue Shopping</button>
                             </Link>
                             <div className="checkout-section">
-                                <p className="total-label">Total: ${totalCost.toFixed(2)}</p>
+                                <p className="total-label">Total: ${totalCartAmount.toFixed(2)}</p>
                                 <button className="checkout-btn" onClick={handleCheckout}>Checkout</button>
                             </div>
                         </div>
